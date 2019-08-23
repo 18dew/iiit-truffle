@@ -12,22 +12,26 @@ contract Token is owner, ERC20{
         _;
     }
 
-    constructor( string _name , string _desc , string _symbol , address _kycC)
+    modifier isKYCContractUnSet(){
+        require(kycR == address(0));
+        _;
+    }
+
+    constructor( string _name , string _desc , string _symbol )
         public
     {
         name = _name;
         symbol = _symbol;
         desc = _desc;
-        kycR = _kycC;
+        owners = msg.sender;
     }
 
-    function updateParams ( string _name , string _desc , string _symbol )
+    function updateKYC ( address _kycC )
+        isKYCContractUnSet
         public
         isOwner
     {
-        name = _name;
-        symbol = _symbol;
-        desc = _desc;
+        kycR = _kycC;
     }
 
     function mint ( address _addr , uint256 _amt )
