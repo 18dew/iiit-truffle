@@ -15,8 +15,6 @@ module.exports = {
       provider: () => {
         return new TruffleWalletProvider(devWallet, 'https://rinkeby.infura.io/v3/0101819596804fcb9b5e509abd2760cb');
       },
-      gas:   4612388,
-      gasPrice: 10000000000,
       network_id: "4",
     },
     rinkeybyTest: {
@@ -25,6 +23,7 @@ module.exports = {
       },
       gas: 6000736,
       gasPrice: web3.toWei("50", "gwei"),
+
       network_id: "4",
     },
 
